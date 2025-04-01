@@ -1,0 +1,219 @@
+[
+  {
+    "id": 1,
+    "question": "Qu'est-ce qu'un réseau de neurones feedforward ?",
+    "type": "open",
+    "answer": "Un réseau où l'information circule uniquement de l'entrée vers la sortie sans rétroaction ni boucle.",
+    "explanation": "Les FFNN n'ont pas de connexions récurrentes ; chaque couche reçoit uniquement les sorties de la couche précédente."
+  },
+  {
+    "id": 2,
+    "question": "Quel est le rôle principal de la fonction d’activation dans un neurone ?",
+    "type": "mcq",
+    "choices": ["Additionner les poids", "Créer une non-linéarité", "Réduire la taille du réseau", "Appliquer un gradient"],
+    "answer": "Créer une non-linéarité",
+    "explanation": "Les fonctions d’activation comme ReLU, Sigmoïde, Tanh permettent au réseau de modéliser des relations complexes non-linéaires."
+  },
+  {
+    "id": 3,
+    "question": "Vrai ou Faux : Le biais est toujours nul dans un réseau FFNN.",
+    "type": "true_false",
+    "answer": "Faux",
+    "explanation": "Le biais est un paramètre essentiel qui permet au modèle d’ajuster la sortie indépendamment des entrées."
+  },
+  {
+    "id": 4,
+    "question": "Quelle est la formule de la fonction sigmoïde ?",
+    "type": "open",
+    "answer": "σ(x) = 1 / (1 + e^(-x))",
+    "explanation": "C’est une fonction d’activation standard qui transforme toute valeur réelle en un résultat entre 0 et 1."
+  },
+  {
+    "id": 5,
+    "question": "Laquelle de ces fonctions d’activation ne sature pas pour les grandes valeurs positives ?",
+    "type": "mcq",
+    "choices": ["Sigmoïde", "Tanh", "ReLU", "Softmax"],
+    "answer": "ReLU",
+    "explanation": "La ReLU (max(0, x)) ne sature pas pour les grandes valeurs positives, ce qui facilite l'apprentissage."
+  },
+  {
+    "id": 6,
+    "question": "Définir la propagation avant (forward propagation).",
+    "type": "open",
+    "answer": "Processus qui calcule la sortie du réseau à partir des entrées, couche par couche.",
+    "explanation": "Chaque neurone calcule sa sortie puis la transmet à la couche suivante jusqu’à la sortie finale."
+  },
+  {
+    "id": 7,
+    "question": "Quel est l’objectif de la rétropropagation (backpropagation) ?",
+    "type": "mcq",
+    "choices": ["Calculer les sorties", "Corriger les poids", "Ajouter de nouvelles couches", "Supprimer les biais"],
+    "answer": "Corriger les poids",
+    "explanation": "La rétropropagation permet de calculer les gradients et d’ajuster les poids pour minimiser l’erreur."
+  },
+  {
+    "id": 8,
+    "question": "Qu'est-ce qu'un poids dans un neurone ?",
+    "type": "open",
+    "answer": "C'est un coefficient qui multiplie une entrée pour moduler son importance.",
+    "explanation": "Chaque entrée est multipliée par un poids qui influence la sortie du neurone."
+  },
+  {
+    "id": 9,
+    "question": "Quel rôle joue le taux d’apprentissage ?",
+    "type": "open",
+    "answer": "Il contrôle l’amplitude des mises à jour des poids à chaque itération.",
+    "explanation": "Un taux trop élevé peut provoquer une divergence, un taux trop faible ralentit l’apprentissage."
+  },
+  {
+    "id": 10,
+    "question": "La fonction Tanh retourne des valeurs entre :",
+    "type": "mcq",
+    "choices": ["0 et 1", "-1 et 1", "-∞ et ∞", "0 et ∞"],
+    "answer": "-1 et 1",
+    "explanation": "La tangente hyperbolique est centrée sur zéro et donne des valeurs dans l’intervalle [-1, 1]."
+  },
+  {
+    "id": 11,
+    "question": "Que veut dire FFNN ?",
+    "type": "open",
+    "answer": "Feedforward Neural Network",
+    "explanation": "C’est l’abréviation anglaise utilisée pour désigner ce type de réseau."
+  },
+  {
+    "id": 12,
+    "question": "Vrai ou Faux : Le FFNN peut résoudre des problèmes de classification.",
+    "type": "true_false",
+    "answer": "Vrai",
+    "explanation": "C’est une des applications principales des réseaux FFNN, avec la régression."
+  },
+  {
+    "id": 13,
+    "question": "Quels sont les éléments inconnus dans un FFNN ?",
+    "type": "mcq",
+    "choices": ["Fonction d’activation", "Poids et biais", "Nombre d’entrées", "Nombre de couches"],
+    "answer": "Poids et biais",
+    "explanation": "Ce sont les paramètres appris durant l'entraînement."
+  },
+  {
+    "id": 14,
+    "question": "Pourquoi introduit-on des couches cachées ?",
+    "type": "open",
+    "answer": "Pour modéliser des relations non-linéaires complexes entre les entrées et les sorties.",
+    "explanation": "Sans elles, le réseau serait équivalent à une simple régression linéaire."
+  },
+  {
+    "id": 15,
+    "question": "Quel est le rôle de la fonction d’erreur ?",
+    "type": "open",
+    "answer": "Elle mesure la différence entre la sortie prédite et la sortie attendue.",
+    "explanation": "C’est cette erreur que le réseau essaie de minimiser pendant l’entraînement."
+  },
+  {
+    "id": 16,
+    "question": "Quelle est la formule du produit matriciel utilisé dans la propagation avant ?",
+    "type": "open",
+    "answer": "z = W * a + b",
+    "explanation": "C’est la combinaison linéaire entre les activations précédentes et les poids/biais actuels."
+  },
+  {
+    "id": 17,
+    "question": "Pourquoi faut-il une fonction d’activation après le produit matriciel ?",
+    "type": "open",
+    "answer": "Pour introduire une non-linéarité et permettre au réseau de modéliser des fonctions complexes.",
+    "explanation": "Sans activation, même un réseau profond se comporte comme un modèle linéaire."
+  },
+  {
+    "id": 18,
+    "question": "Quel est le danger d’un réseau trop complexe ?",
+    "type": "mcq",
+    "choices": ["Sous-apprentissage", "Saturation", "Sur-apprentissage", "Bruit"],
+    "answer": "Sur-apprentissage",
+    "explanation": "Le modèle mémorise les données d’entraînement au lieu de généraliser sur des données nouvelles."
+  },
+  {
+    "id": 19,
+    "question": "Quel est l’effet d’un nombre trop petit de neurones cachés ?",
+    "type": "open",
+    "answer": "Le réseau risque de ne pas apprendre correctement (sous-apprentissage).",
+    "explanation": "Il est alors trop limité pour modéliser la complexité des données."
+  },
+  {
+    "id": 20,
+    "question": "Dans un FFNN, les couches sont-elles connectées entre elles ?",
+    "type": "true_false",
+    "answer": "Vrai",
+    "explanation": "Chaque neurone d’une couche est connecté à tous ceux de la couche suivante (fully connected)."
+  },
+  {
+    "id": 21,
+    "question": "Laquelle de ces fonctions ne s’utilise pas en régression ?",
+    "type": "mcq",
+    "choices": ["ReLU", "Tanh", "Sigmoïde", "Softmax"],
+    "answer": "Softmax",
+    "explanation": "Softmax est typiquement utilisée pour des sorties de classification multinomiale."
+  },
+  {
+    "id": 22,
+    "question": "Quand arrête-t-on l’entraînement d’un FFNN ?",
+    "type": "open",
+    "answer": "Quand la fonction de coût atteint un minimum ou qu’un critère d’arrêt est respecté.",
+    "explanation": "Cela peut être un nombre maximal d’itérations ou une validation croisée stable."
+  },
+  {
+    "id": 23,
+    "question": "Donnez une application réelle des FFNN.",
+    "type": "open",
+    "answer": "Reconnaissance de chiffres manuscrits",
+    "explanation": "Utilisé dans MNIST, les FFNN peuvent apprendre à classer des images de chiffres."
+  },
+  {
+    "id": 24,
+    "question": "Pourquoi faut-il normaliser les données d’entrée ?",
+    "type": "open",
+    "answer": "Pour éviter que certaines entrées dominent l’apprentissage.",
+    "explanation": "Une entrée avec une grande échelle pourrait biaiser la mise à jour des poids."
+  },
+  {
+    "id": 25,
+    "question": "Vrai ou Faux : ReLU peut provoquer le phénomène de neurones morts.",
+    "type": "true_false",
+    "answer": "Vrai",
+    "explanation": "Lorsque ReLU reçoit toujours des entrées négatives, elle devient inactive."
+  },
+  {
+    "id": 26,
+    "question": "Quel est le rôle de la dérivée de la fonction d’activation ?",
+    "type": "open",
+    "answer": "Elle est utilisée pour calculer les gradients lors de la rétropropagation.",
+    "explanation": "Sans dérivée, on ne pourrait pas ajuster les poids efficacement."
+  },
+  {
+    "id": 27,
+    "question": "Que se passe-t-il si le learning rate est trop élevé ?",
+    "type": "open",
+    "answer": "Le réseau peut diverger au lieu de converger.",
+    "explanation": "Les mises à jour deviennent instables et l’erreur augmente."
+  },
+  {
+    "id": 28,
+    "question": "Qu’est-ce qu’une fonction de coût ?",
+    "type": "open",
+    "answer": "Une fonction qui mesure la performance globale du réseau.",
+    "explanation": "Ex : MSE (erreur quadratique moyenne) pour régression, entropie croisée pour classification."
+  },
+  {
+    "id": 29,
+    "question": "Quelle est la dimension de W si on passe d’un vecteur de 5 à une couche de 10 neurones ?",
+    "type": "open",
+    "answer": "W est une matrice de taille (10, 5)",
+    "explanation": "Chaque des 10 neurones a 5 entrées, donc 10 lignes, 5 colonnes."
+  },
+  {
+    "id": 30,
+    "question": "Que veut dire overfitting ?",
+    "type": "open",
+    "answer": "C’est lorsque le modèle apprend par cœur les données d’entraînement.",
+    "explanation": "Il a alors une mauvaise capacité de généralisation sur de nouvelles données."
+  }
+]

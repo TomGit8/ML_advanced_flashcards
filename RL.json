@@ -1,0 +1,152 @@
+[
+    {
+        "question": "Qu'est-ce que le Reinforcement Learning ?",
+        "options": ["Un apprentissage supervisé", "Un apprentissage sans données", "Un apprentissage basé sur la récompense", "Une méthode de clustering"],
+        "answer": 2
+    },
+    {
+        "question": "Quel est l’objectif du Reinforcement Learning ?",
+        "options": ["Minimiser les pertes", "Maximiser la récompense cumulée", "Réduire les biais", "Trouver des clusters"],
+        "answer": 1
+    },
+    {
+        "question": "Que signifie MDP ?",
+        "options": ["Multivariate Decision Policy", "Markov Decision Process", "Matrix Decomposition Protocol", "Maximum Dynamic Planning"],
+        "answer": 1
+    },
+    {
+        "question": "Quel rôle joue le facteur de discount γ ?",
+        "options": ["Augmenter les récompenses futures", "Ignorer les récompenses passées", "Pondérer les récompenses futures", "Réduire les états disponibles"],
+        "answer": 2
+    },
+    {
+        "question": "Que représente la fonction de valeur V(s) ?",
+        "options": ["La politique optimale", "La récompense instantanée", "La valeur estimée d’un état sous une politique", "La probabilité d’une action"],
+        "answer": 2
+    },
+    {
+        "question": "Quelle est la différence entre V(s) et Q(s,a) ?",
+        "options": ["V utilise l’action, Q non", "Q inclut l’action dans le calcul", "Q est toujours supérieur à V", "V est calculé à partir de Q uniquement"],
+        "answer": 1
+    },
+    {
+        "question": "Quelle stratégie combine exploration et exploitation ?",
+        "options": ["Softmax", "Boltzmann", "Epsilon-greedy", "Policy Gradient"],
+        "answer": 2
+    },
+    {
+        "question": "Quelle équation relie les valeurs d’un état à ses suivants ?",
+        "options": ["Équation de Newton", "Équation de transition", "Équation de Bellman", "Équation de Q-learning"],
+        "answer": 2
+    },
+    {
+        "question": "Quelle est la mise à jour de base dans Q-learning ?",
+        "options": ["Q ← max(Q)", "Q ← R + γ max Q'", "Q ← Q + α(R - Q)", "Q ← min Q"],
+        "answer": 1
+    },
+    {
+        "question": "Quelle politique est optimale ?",
+        "options": ["Celle qui minimise le temps", "Celle qui maximise les transitions", "Celle qui maximise les récompenses futures", "Celle qui choisit toujours l’action la plus risquée"],
+        "answer": 2
+    },
+    {
+        "question": "Qu'est-ce qu'une politique dans le RL ?",
+        "options": ["Une suite de récompenses", "Un choix aléatoire", "Une règle de décision", "Une valeur d'état"],
+        "answer": 2
+    },
+    {
+        "question": "La fonction de récompense R(s,a) donne :",
+        "options": ["La valeur de l’état", "Le prochain état", "La récompense reçue après une action", "L’action suivante"],
+        "answer": 2
+    },
+    {
+        "question": "Un état terminal est un état :",
+        "options": ["Qui boucle indéfiniment", "Dont la valeur est nulle", "Qui marque la fin d’un épisode", "Sans action"],
+        "answer": 2
+    },
+    {
+        "question": "Qu’est-ce que le total payoff ?",
+        "options": ["La somme des coûts", "La moyenne des récompenses", "La récompense cumulée actualisée", "La valeur d'une seule étape"],
+        "answer": 2
+    },
+    {
+        "question": "Pourquoi utiliser l’espérance dans la valeur ?",
+        "options": ["L’environnement est déterministe", "On veut ignorer les mauvaises actions", "L’environnement est stochastique", "Pour minimiser le coût"],
+        "answer": 2
+    },
+    {
+        "question": "Dans le Q-learning, que fait α ?",
+        "options": ["Contrôle l'exploration", "Contrôle le taux d’apprentissage", "Contrôle le bruit", "Choisit la récompense"],
+        "answer": 1
+    },
+    {
+        "question": "Quelle méthode est hors politique (off-policy) ?",
+        "options": ["SARSA", "Policy Gradient", "Monte Carlo", "Q-learning"],
+        "answer": 3
+    },
+    {
+        "question": "Quel algo alterne entre évaluation et amélioration ?",
+        "options": ["Q-learning", "Policy Iteration", "Value Iteration", "Monte Carlo"],
+        "answer": 1
+    },
+    {
+        "question": "Que maximise la policy iteration ?",
+        "options": ["Le temps", "Les transitions", "La récompense attendue", "La distance"],
+        "answer": 2
+    },
+    {
+        "question": "Le Q-learning utilise quelle stratégie par défaut ?",
+        "options": ["Politique optimale", "Boltzmann", "Epsilon-greedy", "Policy Gradient"],
+        "answer": 2
+    },
+    {
+        "question": "Quand arrêter un épisode ?",
+        "options": ["À tout moment", "Après 10 étapes", "Quand un état terminal est atteint", "Quand la fonction Q est stable"],
+        "answer": 2
+    },
+    {
+        "question": "Qu’est-ce qu’une fonction de transition ?",
+        "options": ["Une fonction linéaire", "Une matrice de valeurs", "P(s’|s,a)", "Q(s,a)"],
+        "answer": 2
+    },
+    {
+        "question": "Dans un MDP, l’environnement est :",
+        "options": ["Non-Markovien", "Statique", "Stochastique ou déterministe", "Toujours aléatoire"],
+        "answer": 2
+    },
+    {
+        "question": "L’approche par modèle utilise :",
+        "options": ["Q-table", "Données réelles", "Une modélisation de P et R", "Une exploration uniquement"],
+        "answer": 2
+    },
+    {
+        "question": "Dans le RL, un agent :",
+        "options": ["Observe uniquement", "Interagit activement avec l’environnement", "Choisit les récompenses", "Étiquette les données"],
+        "answer": 1
+    },
+    {
+        "question": "La politique optimale π* maximise :",
+        "options": ["Le temps", "La distance", "Les transitions", "La récompense attendue"],
+        "answer": 3
+    },
+    {
+        "question": "La différence entre SARSA et Q-learning est :",
+        "options": ["SARSA est hors politique", "Q-learning suit la politique réelle", "SARSA suit la politique actuelle", "Q-learning est déterministe"],
+        "answer": 2
+    },
+    {
+        "question": "Un agent greedy choisit toujours :",
+        "options": ["Une action aléatoire", "L’action avec la valeur maximale", "L’action de moindre coût", "La politique suivante"],
+        "answer": 1
+    },
+    {
+        "question": "Qu’est-ce que la convergence dans Q-learning ?",
+        "options": ["Stabilité de la fonction Q", "Égalité des valeurs", "Récompense maximale", "Arrêt de l’apprentissage"],
+        "answer": 0
+    },
+    {
+        "question": "Quel algo de RL n’utilise pas de modèle ?",
+        "options": ["Q-learning", "Dynamic programming", "Value iteration", "Policy iteration"],
+        "answer": 0
+    }
+]

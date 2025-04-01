@@ -1,50 +1,27 @@
 import tkinter as tk
 from tkinter import messagebox
+import json
 
-# Liste des questions / réponses
-questions = [
-    {
-        "question": "1. Quelle est la fonction du biais dans un neurone artificiel ?",
-        "options": ["Multiplier les poids", "Décaler la fonction d’activation", "Supprimer les entrées nulles", "Ajouter du bruit"],
-        "answer": 1
-    },
-    {
-        "question": "2. Quelle fonction d’activation peut provoquer des 'neurones morts' ?",
-        "options": ["Sigmoïde", "Tanh", "ReLU", "Leaky ReLU"],
-        "answer": 2
-    },
-    {
-        "question": "3. Lors de la propagation avant, que calcule-t-on en premier dans une couche ?",
-        "options": ["Fonction d’activation", "Sortie", "Somme pondérée (z)", "Erreur"],
-        "answer": 2
-    },
-    {
-        "question": "4. À quoi sert la rétropropagation ?",
-        "options": ["Calculer la sortie du réseau", "Mettre à jour les poids", "Multiplier les entrées", "Créer un réseau récurrent"],
-        "answer": 1
-    },
-    {
-        "question": "5. Quel est l’effet d’un taux d’apprentissage trop élevé ?",
-        "options": ["Apprentissage trop lent", "Pas de convergence", "Réseau figé", "Aucun"],
-        "answer": 1
-    }
-]
+# Charger les questions depuis le fichier JSON
+with open("qcm_ffnn_30_questions.json", "r", encoding="utf-8") as f:
+    questions = json.load(f)
 
 class QuizApp:
     def __init__(self, root):
         self.root = root
         self.root.title("QCM - Réseaux de Neurones FFNN 🧠")
+        self.root.geometry("700x500")
 
         self.q_index = 0
         self.score = 0
 
-        self.question_label = tk.Label(root, text="", wraplength=500, font=("Helvetica", 14), justify="left")
+        self.question_label = tk.Label(root, text="", wraplength=650, font=("Helvetica", 14), justify="left")
         self.question_label.pack(pady=20)
 
-        self.radio_var = tk.IntVar()
+        self.radio_var = tk.StringVar()
         self.radio_buttons = []
-        for i in range(4):
-            rb = tk.Radiobutton(root, text="", variable=self.radio_var, value=i, font=("Helvetica", 12))
+        for _ in range(4):  # Max 4 choix affichés
+            rb = tk.Radiobutton(root, text="", variable=self.radio_var, value="", font=("Helvetica", 12), wraplength=600)
             rb.pack(anchor="w")
             self.radio_buttons.append(rb)
 
@@ -55,20 +32,36 @@ class QuizApp:
 
     def load_question(self):
         q = questions[self.q_index]
-        self.question_label.config(text=q["question"])
-        self.radio_var.set(-1)
-        for i, option in enumerate(q["options"]):
-            self.radio_buttons[i].config(text=option)
+        self.radio_var.set(None)
+        self.question_label.config(text=f"Q{self.q_index + 1}: {q['question']}")
+
+        # Cacher tous les boutons au début
+        for rb in self.radio_buttons:
+            rb.pack_forget()
+
+        if q["type"] in ["mcq", "true_false"]:
+            options = q["choices"] if "choices" in q else ["Vrai", "Faux"]
+            for i, option in enumerate(options):
+                self.radio_buttons[i].config(text=option, value=option)
+                self.radio_buttons[i].pack(anchor="w")
+        else:
+            self.question_label.config(text=f"{q['question']}\n\n(Type : question ouverte)\nRéponse attendue : {q['answer']}\n\nExplication : {q['explanation']}")
 
     def next_question(self):
-        selected = self.radio_var.get()
-        if selected == -1:
-            messagebox.showwarning("Attention", "Merci de sélectionner une réponse.")
-            return
+        q = questions[self.q_index]
 
-        correct = questions[self.q_index]["answer"]
-        if selected == correct:
-            self.score += 1
+        if q["type"] in ["mcq", "true_false"]:
+            selected = self.radio_var.get()
+            if not selected:
+                messagebox.showwarning("Attention", "Merci de sélectionner une réponse.")
+                return
+
+            correct = q["answer"]
+            if selected.strip().lower() == correct.strip().lower():
+                self.score += 1
+                messagebox.showinfo("Bonne réponse ✅", f"✅ Bonne réponse !\n\n{q['explanation']}")
+            else:
+                messagebox.showinfo("Mauvaise réponse ❌", f"❌ Mauvaise réponse.\nRéponse correcte : {correct}\n\n{q['explanation']}")
 
         self.q_index += 1
         if self.q_index >= len(questions):
@@ -77,13 +70,15 @@ class QuizApp:
             self.load_question()
 
     def show_result(self):
-        message = f"🎯 Score final : {self.score}/{len(questions)}\n"
+        message = f"🎯 Score final : {self.score}/{len([q for q in questions if q['type'] in ['mcq', 'true_false']])}\n"
         if self.score == len(questions):
-            message += "💪 Parfait ! Tu maîtrises le sujet."
-        elif self.score >= 3:
-            message += "🧠 Pas mal ! Encore un petit effort."
+            message += "💪 Parfait ! Tu maîtrises tout."
+        elif self.score >= 20:
+            message += "🧠 Très bon niveau !"
+        elif self.score >= 15:
+            message += "🙂 Solide mais peut mieux faire."
         else:
-            message += "📘 Il est temps de réviser ensemble 😉"
+            message += "📘 Besoin de réviser un peu !"
         messagebox.showinfo("Résultat", message)
         self.root.destroy()
 
