@@ -1,0 +1,308 @@
+import tkinter as tk
+from tkinter import messagebox
+
+# Liste des questions (extrait : ajoute les autres selon le modèle)
+questions = [
+    {
+        "question": "An information system is:",
+        "choices": [
+            "An IT system: computers and software, the whole being networked",
+            "A set of codified data stored in one or a few databases",
+            "Compilation of electronic processing chain",
+            "A set of messages under the form of flows exchanged between actors"
+        ],
+        "answer": "A set of codified data stored in one or a few databases",
+        "type": "mcq"
+    },
+    {
+        "question": "An I.S. has four basic functions:",
+        "choices": ["Write a report for top management", "Ensure horizontality", "Memorize/capitalize data", "Standardized data",
+                    "Release/communicate data", "Extract hidden knowledge", "Create/write data", "Network databases", "Process/use data"],
+        "answer": ["Ensure horizontality", "Memorize/capitalize data", "Release/communicate data", "Process/use data"],
+        "type": "multi"
+    },
+    {
+        "question": "I.S. strategic alignment consists in:",
+        "choices": [
+            "Exploit a toolbox to synchronize business processes",
+            "Prioritize and select strategic projects",
+            "Align exec vision with business units",
+            "Optimize IS budget",
+            "Define functional scope",
+            "Make IS strategy coherent with corporate strategy"
+        ],
+        "answer": ["Prioritize and select strategic projects", "Make IS strategy coherent with corporate strategy"],
+        "type": "multi"
+    },
+    {
+        "question": "Henderson & Venkatraman model — strategy led by general management:",
+        "choices": [
+            "The IS is at the origin of the strategy and a source of competitive advantages",
+            "The IS is reactive",
+            "The IS supports internal business innovation",
+            "The IS only supports operations"
+        ],
+        "answer": "The IS is at the origin of the strategy and a source of competitive advantages",
+        "type": "mcq"
+    },
+    {
+        "question": "Moore’s law says:",
+        "choices": [
+            "Computer complexity and software increase over time",
+            "The more computers, the more they poison life",
+            "Two types of individuals manage IS",
+            "More machines = more eBay and Bitcoin",
+            "Computers' power doubles every 18 months"
+        ],
+        "answer": "Computers' power doubles every 18 months",
+        "type": "mcq"
+    },
+    {
+        "question": "Average yearly IT spending across industries is:",
+        "choices": ["2%", "8%", "< 1%", "10%", "> 10%"],
+        "answer": "8%",
+        "type": "mcq"
+    },
+    {
+        "question": "Three levels of an Information System:",
+        "choices": [
+            "The IT level", "The technological level", "The operating level", "The human level",
+            "Tactical/management control", "Vertical/horizontal exchanges", "Strategic/steering level"
+        ],
+        "answer": ["The IT level", "Tactical/management control", "Strategic/steering level"],
+        "type": "multi"
+    },
+    {
+        "question": "Define ERP software:",
+        "choices": [
+            "An accounting and financial packaged software",
+            "A big database",
+            "A set of software modules integrating main functions",
+            "A data warehouse for all users",
+            "A package for consolidating scattered data"
+        ],
+        "answer": "A set of software modules integrating main functions",
+        "type": "mcq"
+    },
+    {
+        "question": "Advantages of ERP:",
+        "choices": [
+            "Easy to implement", "Suppress multiple captures", "Thorough review of business processes",
+            "Easily save old IT data", "Make communication traceable", "Standardized and easy",
+            "Easily accepted by all employees"
+        ],
+        "answer": ["Thorough review of business processes", "Easily save old IT data", "Make communication traceable"],
+        "type": "multi"
+    },
+    {
+        "question": "What is a Data Warehouse?",
+        "choices": [
+            "An ERP", "A statistical/datamining tool", "A secure storage system",
+            "A set of consolidated data to help decision-making", "A Balanced Score Card model"
+        ],
+        "answer": "A set of consolidated data to help decision-making",
+        "type": "mcq"
+    },
+    {
+        "question": "Who must be the project owner in specifications stage?",
+        "choices": ["Organization by department", "IT project manager", "CIO", "External consultant", "CEO"],
+        "answer": "IT project manager",
+        "type": "mcq"
+    },
+    {
+        "question": "Why anticipate I.S. obsolescence?",
+        "choices": [
+            "Less and less secure", "Fits less with users' needs", "Higher maintenance cost",
+            "Needs powerful servers", "Bad user habits and poor reputation"
+        ],
+        "answer": ["Fits less with users' needs", "Higher maintenance cost"],
+        "type": "multi"
+    },
+    {
+        "question": "ERP editors — true statements:",
+        "choices": [
+            "Oracle is ERP and DB editor", "SAP provides R/3", "Microsoft = ERP and Office",
+            "SAP existed before the 80s", "ODOO = open source ERP", "SAP = >60% market share"
+        ],
+        "answer": ["Oracle is ERP and DB editor", "SAP provides R/3", "Microsoft = ERP and Office", "ODOO = open source ERP", "SAP = >60% market share"],
+        "type": "multi"
+    },
+    {
+        "question": "Approaches for I.S. integration:",
+        "choices": [
+            "Modular approach", "Open Social approach", "Technology push",
+            "System dynamic development", "Organization pull"
+        ],
+        "answer": ["Modular approach", "System dynamic development"],
+        "type": "multi"
+    },
+    {
+        "question": "ERP implementation risks:",
+        "choices": [
+            "Poor communication", "Only licenses in budget", "Approach based on processes",
+            "Open source DB", "Minimize training cost", "Weekly update emails", "Involve decision makers"
+        ],
+        "answer": ["Poor communication", "Only licenses in budget", "Minimize training cost"],
+        "type": "multi"
+    },
+    {
+        "question": "Matching exercise: ERP-related terms (not MCQ)",
+        "type": "match",
+        "match": {
+            "Data warehouse": "structure data from a few bases",
+            "ERP": "SAP and Oracle are the two main editors",
+            "Datamining": "find how to obtain new customers",
+            "Workflow": "automate the leaves’ requests",
+            "CMS": "digitize all or part of the company’s documents"
+        }
+    },
+    {
+        "question": "Two tools to measure IS project profitability:",
+        "type": "open",
+        "answer": ["ROI", "TCO"]
+    },
+    {
+        "question": "Balanced Score Card – four quadrants:",
+        "choices": [
+            "Procedures’ quadrant", "Financial quadrant", "Customer quadrant",
+            "Production quadrant", "Business process quadrant", "Logistics quadrant", "Organizational learning quadrant"
+        ],
+        "answer": ["Financial quadrant", "Customer quadrant", "Production quadrant", "Organizational learning quadrant"],
+        "type": "multi"
+    },
+    {
+        "question": "Flows identified in a company:",
+        "choices": [
+            "Physical, financial, information, decision making",
+            "Physical, financial, information, management",
+            "Commercial, financial, information, management",
+            "Accounting, human, commercial, guiding"
+        ],
+        "answer": "Physical, financial, information, decision making",
+        "type": "mcq"
+    },
+    {
+        "question": "I.S. urbanization – what’s necessary?",
+        "choices": [
+            "Choose tools specific to needs", "Prioritize IS projects",
+            "Reengineer IS vertically", "Cut IS into blocks", "Define architecture fast"
+        ],
+        "answer": ["Prioritize IS projects", "Reengineer IS vertically"],
+        "type": "multi"
+    }
+
+]
+
+class QuizApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("QCM - IS Strategy 🧠")
+        self.root.geometry("800x500")
+
+        self.q_index = 0
+        self.score = 0
+        self.user_answers = []
+
+        self.question_label = tk.Label(root, text="", wraplength=750, font=("Helvetica", 14), justify="left")
+        self.question_label.pack(pady=20)
+
+        self.radio_var = tk.StringVar()
+        self.radio_buttons = []
+        self.check_vars = []
+        self.check_buttons = []
+        self.entry_answer = tk.Entry(root, font=("Helvetica", 12), width=50)
+
+        self.next_btn = tk.Button(root, text="Suivant", command=self.next_question, font=("Helvetica", 12, "bold"))
+        self.next_btn.pack(pady=20)
+
+        self.load_question()
+
+    def clear_widgets(self):
+        for rb in self.radio_buttons:
+            rb.pack_forget()
+        for cb in self.check_buttons:
+            cb.pack_forget()
+        self.entry_answer.pack_forget()
+
+    def load_question(self):
+        self.clear_widgets()
+        q = questions[self.q_index]
+        self.question_label.config(text=f"Q{self.q_index + 1}: {q['question']}")
+
+        if q["type"] == "mcq":
+            self.radio_var.set(None)
+            self.radio_buttons = []
+            for choice in q["choices"]:
+                rb = tk.Radiobutton(self.root, text=choice, variable=self.radio_var, value=choice, font=("Helvetica", 12), wraplength=700)
+                rb.pack(anchor="w")
+                self.radio_buttons.append(rb)
+
+        elif q["type"] == "multi":
+            self.check_vars = []
+            self.check_buttons = []
+            for choice in q["choices"]:
+                var = tk.IntVar()
+                cb = tk.Checkbutton(self.root, text=choice, variable=var, font=("Helvetica", 12), wraplength=700)
+                cb.pack(anchor="w")
+                self.check_vars.append((choice, var))
+                self.check_buttons.append(cb)
+
+        elif q["type"] == "open":
+            self.entry_answer.delete(0, tk.END)
+            self.entry_answer.pack(pady=10)
+
+    def next_question(self):
+        q = questions[self.q_index]
+        user_response = None
+
+        if q["type"] == "mcq":
+            user_response = self.radio_var.get()
+            if not user_response:
+                messagebox.showwarning("Attention", "Merci de sélectionner une réponse.")
+                return
+            correct = q["answer"][0]
+            if user_response.strip().lower() == correct.strip().lower():
+                self.score += 1
+
+        elif q["type"] == "multi":
+            selected = [choice for choice, var in self.check_vars if var.get() == 1]
+            if not selected:
+                messagebox.showwarning("Attention", "Merci de sélectionner au moins une réponse.")
+                return
+            if set(selected) == set(q["answer"]):
+                self.score += 1
+
+        elif q["type"] == "open":
+            user_text = self.entry_answer.get().strip().upper()
+            if not user_text:
+                messagebox.showwarning("Attention", "Merci d’écrire une réponse.")
+                return
+            expected = [ans.upper() for ans in q["answer"]]
+            matched = any(ans in user_text for ans in expected)
+            if matched:
+                self.score += 1
+
+        self.q_index += 1
+        if self.q_index >= len(questions):
+            self.show_result()
+        else:
+            self.load_question()
+
+    def show_result(self):
+        message = f"🎯 Score final : {self.score}/{len(questions)}\n"
+        if self.score == len(questions):
+            message += "💪 Parfait !"
+        elif self.score >= len(questions) * 0.75:
+            message += "🧠 Très bon niveau !"
+        elif self.score >= len(questions) * 0.5:
+            message += "🙂 Peut mieux faire."
+        else:
+            message += "📘 Révision nécessaire."
+        messagebox.showinfo("Résultat", message)
+        self.root.destroy()
+
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = QuizApp(root)
+    root.mainloop()
